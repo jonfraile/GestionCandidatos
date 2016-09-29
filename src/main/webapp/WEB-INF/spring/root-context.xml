@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- Definir el DataSource <Referencia a database.properties que esta en resources> -->
+	 
+	<bean id="databaseProperties"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location" value="classpath:/database.properties" />
+	</bean>
+	
+	
+	<bean name="mysqlDataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="${mysql.driver}" />
+		<property name="url" value="${mysql.url}" />
+		<property name="username" value="${mysql.user}" />
+		<property name="password" value="${mysql.pass}" />
+	</bean>
+	
+	
+	<bean id="InventarioDAOImp" class="com.ipartek.formacion.repository.CandidatoDAOImp">
+		<property name="dataSource" ref="mysqlDataSource" />
+	</bean>	
+	
+	
+	
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+		
+</beans>

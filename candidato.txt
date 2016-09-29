@@ -1,0 +1,72 @@
+************************TABLA CANDIDATOS************************
+
+id PK
+dni Unique
+nombre Not Null
+
+
+
+********************CAMPOS PARA AÑADIR DESPUES******************
+
+
+apellido1 Not Null
+apellido2 Not Null
+email Not Null Unique
+telefono1
+telefono2
+fecha_nacimiento
+avatar
+
+
+
+
+
+************************ACCIONES*********************************
+
+listar		(listar)
+crear 		(nuevo->guardar)
+modificar	(detalle->guardar)
+eliminar	(eliminar)
+buscarPorId  	(detalle)
+buscarPorDni 	(buscar)
+
+****************FUTURAS ACCIONES*********************************
+
+buscarPorEmail
+
+
+*****************************************************************
+
+@controller
+candidatoController
+	
+	-listar 	/candidato 			GET
+	-buscar 	/candidato/buscar 		GET
+	-nuevo 		/candidato/mostrar 		GET
+	-detalle 	/candidato/mostrar/{id} 	GET
+	-eliminar	/candidato/eliminar/{id}	GET
+	-guardar	/candidato/guardar		POST
+
+@service
+candidatoService
+candidatoServiceImpl
+
+@repository
+candidatoDAO
+candidatoDAOImpl
+
+@dominio
+pojoCandidato
+
+
+************************views************************
+form.jsp
+index.jsp
+
+
+
+----------------------------------------------
+- data Table plugin, bootstrap, font awesome -
+----------------------------------------------
+
+
